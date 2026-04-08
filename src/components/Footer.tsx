@@ -1,0 +1,62 @@
+import { Mail, Github, Linkedin, Wrench } from "lucide-react";
+import { Link } from "react-router-dom";
+
+const Footer = () => {
+  return (
+    <footer className="border-t border-border/50 bg-secondary/30">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid md:grid-cols-3 gap-8">
+          {/* Brand */}
+          <div>
+            <div className="flex items-center gap-2 font-display text-lg font-bold tracking-wider mb-3">
+              <Wrench className="h-5 w-5 text-primary" />
+              <span className="text-gradient">PORTFOLIO</span>
+            </div>
+            <p className="text-sm text-muted-foreground">
+              Mechanical Engineering Student · Passionate about design, fabrication, and robotics.
+            </p>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h4 className="font-display text-xs tracking-widest uppercase text-primary mb-4">Quick Links</h4>
+            <div className="flex flex-col gap-2">
+              {[
+                { label: "Home", path: "/" },
+                { label: "Projects", path: "/projects" },
+                { label: "Resume", path: "/resume" },
+                { label: "Contact", path: "/contact" },
+              ].map((link) => (
+                <Link key={link.path} to={link.path} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h4 className="font-display text-xs tracking-widest uppercase text-primary mb-4">Get in Touch</h4>
+            <div className="flex flex-col gap-2 text-sm text-muted-foreground">
+              <a href="mailto:student@university.edu" className="flex items-center gap-2 hover:text-primary transition-colors">
+                <Mail className="h-4 w-4" /> student@university.edu
+              </a>
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary transition-colors">
+                <Github className="h-4 w-4" /> GitHub
+              </a>
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary transition-colors">
+                <Linkedin className="h-4 w-4" /> LinkedIn
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div className="mt-10 pt-6 border-t border-border/30 text-center text-xs text-muted-foreground">
+          © {new Date().getFullYear()} All rights reserved. Built with passion and precision.
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;
