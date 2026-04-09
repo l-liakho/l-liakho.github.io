@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import { ArrowLeft, Calendar, X, ChevronLeft, ChevronRight } from "lucide-react";
 
 import Footer from "@/components/Footer";
@@ -11,6 +12,31 @@ const ProjectDetail = () => {
   const { id } = useParams();
   const project = projects.find((p) => p.id === id);
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+  const [portraitSrcs, setPortraitSrcs] = useState<Set<string>>(new Set());
+
+  useEffect(() => {
+    if (!project) return;
+    const localVideos = project.gallery.filter((item) => item.type === "video");
+    localVideos.forEach((item) => {
+      const video = document.createElement("video");
+      video.preload = "metadata";
+      video.onloadedmetadata = () => {
+        if (video.videoHeight > video.videoWidth) {
+          setPortraitSrcs((prev) => new Set(prev).add(item.src));
+        }
+      };
+      video.src = item.src;
+    });
+  }, [project]);
+
+  useEffect(() => {
+    if (lightboxIndex !== null) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => { document.body.style.overflow = ""; };
+  }, [lightboxIndex]);
 
   if (!project) {
     return (
@@ -23,10 +49,15 @@ const ProjectDetail = () => {
     );
   }
 
+  const allVideos = project.gallery.filter((item) => item.type === "video" || item.type === "youtube");
+  const landscapeVideos = allVideos.filter((item) => item.type === "youtube" || !portraitSrcs.has(item.src));
+  const portraitVideos = allVideos.filter((item) => item.type !== "youtube" && portraitSrcs.has(item.src));
+  const photos = project.gallery.filter((item) => item.type === "image");
+
   const openLightbox = (index: number) => setLightboxIndex(index);
   const closeLightbox = () => setLightboxIndex(null);
-  const prevImage = () => setLightboxIndex((i) => (i !== null && i > 0 ? i - 1 : project.gallery.length - 1));
-  const nextImage = () => setLightboxIndex((i) => (i !== null && i < project.gallery.length - 1 ? i + 1 : 0));
+  const prevImage = () => setLightboxIndex((i) => (i !== null && i > 0 ? i - 1 : photos.length - 1));
+  const nextImage = () => setLightboxIndex((i) => (i !== null && i < photos.length - 1 ? i + 1 : 0));
 
   return (
     <div className="min-h-screen bg-background bg-grid">
@@ -99,44 +130,94 @@ const ProjectDetail = () => {
           {project.gallery.length > 0 && (
             <FadeIn>
               <div>
-                <h2 className="font-display text-2xl font-bold mb-8">
-                  <GradientText colors={["#3A0CA3","#9B4FDE","#B19EEF"]} animationSpeed={5} showBorder={false} yoyo={false} className="!mx-0">
+                <h2 className="font-display text-2xl font-bold mb-8 flex justify-center">
+                  <GradientText colors={["#3A0CA3","#9B4FDE","#B19EEF"]} animationSpeed={5} showBorder={false} yoyo={false}>
                     Gallery
                   </GradientText>
                 </h2>
 
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {project.gallery.map((item, i) => (
-                    <FadeIn key={i} delay={0.05 * i} distance={20}>
-                      {item.type === "video" ? (
-                        <div className="rounded-lg overflow-hidden glow-border bg-card/50">
-                          <video
-                            src={item.src}
-                            controls
-                            className="w-full aspect-video object-cover"
-                          />
-                          {item.caption && (
-                            <p className="text-xs text-muted-foreground p-2 text-center">{item.caption}</p>
-                          )}
-                        </div>
-                      ) : (
-                        <div
-                          className="rounded-lg overflow-hidden glow-border cursor-pointer group"
-                          onClick={() => openLightbox(i)}
-                        >
-                          <img
-                            src={item.src}
-                            alt={item.caption || `${project.title} gallery ${i + 1}`}
-                            className="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500"
-                          />
-                          {item.caption && (
-                            <p className="text-xs text-muted-foreground p-2 text-center bg-card/50">{item.caption}</p>
-                          )}
-                        </div>
-                      )}
-                    </FadeIn>
-                  ))}
-                </div>
+                {/* Videos */}
+                {allVideos.length > 0 && (
+                  <div className="mb-10">
+                    <h3 className="text-lg font-semibold text-muted-foreground mb-4">Videos</h3>
+                    {landscapeVideos.length > 0 && (
+                      <div className="grid grid-cols-2 gap-4">
+                        {landscapeVideos.map((item, i) => (
+                          <FadeIn key={i} delay={0.05 * i} distance={20}>
+                            {item.type === "youtube" ? (
+                              <div className="rounded-lg overflow-hidden glow-border">
+                                <iframe
+                                  src={`https://www.youtube.com/embed/${new URL(item.src).searchParams.get("v")}`}
+                                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                  allowFullScreen
+                                  className="w-full aspect-video"
+                                />
+                                {item.caption && (
+                                  <p className="text-xs text-muted-foreground p-2 text-center">{item.caption}</p>
+                                )}
+                              </div>
+                            ) : (
+                              <div className="rounded-lg overflow-hidden glow-border">
+                                <video
+                                  src={item.src}
+                                  controls
+                                  className="w-full"
+                                />
+                                {item.caption && (
+                                  <p className="text-xs text-muted-foreground p-2 text-center">{item.caption}</p>
+                                )}
+                              </div>
+                            )}
+                          </FadeIn>
+                        ))}
+                      </div>
+                    )}
+                    {portraitVideos.length > 0 && (
+                      <div className={`grid grid-cols-3 gap-4 ${landscapeVideos.length > 0 ? "mt-4" : ""}`}>
+                        {portraitVideos.map((item, i) => (
+                          <FadeIn key={i} delay={0.05 * i} distance={20}>
+                            <div className="rounded-lg overflow-hidden glow-border">
+                              <video
+                                src={item.src}
+                                controls
+                                className="w-full"
+                              />
+                              {item.caption && (
+                                <p className="text-xs text-muted-foreground p-2 text-center">{item.caption}</p>
+                              )}
+                            </div>
+                          </FadeIn>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Photos */}
+                {photos.length > 0 && (
+                  <div>
+                    <h3 className="text-lg font-semibold text-muted-foreground mb-4">Photos</h3>
+                    <div className="grid grid-cols-2 gap-4">
+                      {photos.map((item, i) => (
+                        <FadeIn key={i} delay={0.05 * i} distance={20}>
+                          <div
+                            className="rounded-lg overflow-hidden glow-border cursor-pointer group"
+                            onClick={() => openLightbox(i)}
+                          >
+                            <img
+                              src={item.src}
+                              alt={item.caption || `${project.title} photo ${i + 1}`}
+                              className="w-full aspect-square object-cover group-hover:scale-105 transition-transform duration-500"
+                            />
+                            {item.caption && (
+                              <p className="text-xs text-muted-foreground p-2 text-center bg-card/50">{item.caption}</p>
+                            )}
+                          </div>
+                        </FadeIn>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             </FadeIn>
           )}
@@ -144,7 +225,7 @@ const ProjectDetail = () => {
       </main>
 
       {/* Lightbox */}
-      {lightboxIndex !== null && (
+      {lightboxIndex !== null && createPortal(
         <div
           className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-sm flex items-center justify-center"
           onClick={closeLightbox}
@@ -164,22 +245,13 @@ const ProjectDetail = () => {
           </button>
 
           <div className="max-w-4xl max-h-[85vh] px-16" onClick={(e) => e.stopPropagation()}>
-            {project.gallery[lightboxIndex].type === "video" ? (
-              <video
-                src={project.gallery[lightboxIndex].src}
-                controls
-                autoPlay
-                className="max-w-full max-h-[85vh] rounded-lg"
-              />
-            ) : (
-              <img
-                src={project.gallery[lightboxIndex].src}
-                alt={project.gallery[lightboxIndex].caption || ""}
-                className="max-w-full max-h-[85vh] rounded-lg object-contain"
-              />
-            )}
-            {project.gallery[lightboxIndex].caption && (
-              <p className="text-center text-white/70 text-sm mt-4">{project.gallery[lightboxIndex].caption}</p>
+            <img
+              src={photos[lightboxIndex].src}
+              alt={photos[lightboxIndex].caption || ""}
+              className="max-w-full max-h-[85vh] rounded-lg object-contain"
+            />
+            {photos[lightboxIndex].caption && (
+              <p className="text-center text-white/70 text-sm mt-4">{photos[lightboxIndex].caption}</p>
             )}
           </div>
 
@@ -189,7 +261,8 @@ const ProjectDetail = () => {
           >
             <ChevronRight className="h-10 w-10" />
           </button>
-        </div>
+        </div>,
+        document.body
       )}
 
       <Footer />

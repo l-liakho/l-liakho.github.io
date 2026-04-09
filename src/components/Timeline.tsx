@@ -41,7 +41,7 @@ const Timeline = () => {
                   loading="lazy"
                   width={800}
                   height={600}
-                  className="rounded-lg glow-border w-full max-w-sm mx-auto object-cover aspect-video hover:scale-[1.03] hover:shadow-xl hover:shadow-primary/10 transition-all duration-500"
+                  className="rounded-lg glow-border w-full max-w-sm mx-auto object-cover aspect-square hover:scale-[1.03] hover:shadow-xl hover:shadow-primary/10 transition-all duration-500"
                 />
               </Link>
             </FadeIn>
