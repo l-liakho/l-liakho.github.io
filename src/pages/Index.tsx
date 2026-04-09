@@ -3,6 +3,7 @@ import { ArrowRight, FileText, Cog, Cpu, Ruler, Code } from "lucide-react";
 import Timeline from "@/components/Timeline";
 import Footer from "@/components/Footer";
 import LightPillar from "@/components/LightPillar";
+import BlurText from "@/components/BlurText";
 
 const Index = () => {
   return (
@@ -32,14 +33,21 @@ const Index = () => {
             <span className="font-display text-[13px] tracking-[0.3em] uppercase text-white">Mechanical Engineering Portfolio</span>
           </div>
 
-          <h1 className="font-display text-5xl md:text-8xl font-bold tracking-tight leading-tight">
-            <span className="text">Lukas Liakhovitch</span>
-          </h1>
+          <BlurText
+            text="Lukas Liakhovitch"
+            delay={60}
+            animateBy="letters"
+            direction="top"
+            className="font-display text-5xl md:text-8xl font-bold tracking-tight leading-tight justify-center"
+          />
 
-          <p className="mt-8 text-lg text-foreground max-w-2xl mx-auto leading-relaxed">
-            Aspiring mechanical engineer with a passion for robotics, manufacturing, and innovative design.
-            Building solutions from concept to prototype.
-          </p>
+          <BlurText
+            text="Aspiring mechanical engineer with a passion for robotics, manufacturing, and innovative design. Building solutions from concept to prototype."
+            delay={20}
+            animateBy="words"
+            direction="top"
+            className="mt-8 text-lg text-foreground max-w-2xl mx-auto leading-relaxed justify-center"
+          />
 
           <div className="flex flex-wrap gap-5 justify-center mt-10">
             <Link
@@ -59,7 +67,8 @@ const Index = () => {
       </section>
 
       {/* About Snippet */}
-      <section className="py-24 relative">
+      <section className="pt-24 pb-24 relative">
+        <div className="absolute inset-x-0 -top-12 h-12 bg-gradient-to-b from-transparent to-background" />
         <div className="container mx-auto px-4 max-w-4xl">
           <h2 className="font-display text-2xl font-bold text-center mb-6">
             <span className="text-gradient">About Me</span>
@@ -90,7 +99,9 @@ const Index = () => {
       </section>
 
       {/* Timeline */}
-      <section className="py-24 bg-secondary/20">
+      <section className="py-24 bg-secondary/20 relative">
+        <div className="absolute inset-x-0 -top-12 h-12 bg-gradient-to-b from-transparent to-secondary/20" />
+        <div className="absolute inset-x-0 -bottom-12 h-12 bg-gradient-to-t from-transparent to-secondary/20" />
         <div className="container mx-auto px-4 max-w-5xl">
           <h2 className="font-display text-2xl font-bold text-center mb-16">
             <span className="text-gradient">Project Timeline</span>
