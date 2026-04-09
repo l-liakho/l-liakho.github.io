@@ -22,7 +22,6 @@ const ProjectDetail = () => {
 
   return (
     <div className="min-h-screen bg-background bg-grid">
-      <Navbar />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4 max-w-3xl">
           <Link to="/projects" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8">

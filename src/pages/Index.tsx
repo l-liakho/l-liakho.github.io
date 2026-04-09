@@ -2,14 +2,11 @@ import { Link } from "react-router-dom";
 import { ArrowRight, FileText, Cog, Cpu, Ruler, Code } from "lucide-react";
 import Timeline from "@/components/Timeline";
 import Footer from "@/components/Footer";
-import Navbar from "@/components/Navbar";
 import LightPillar from "@/components/LightPillar";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background bg-grid">
-      <Navbar />
-
       {/* Hero */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
