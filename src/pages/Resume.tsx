@@ -1,5 +1,5 @@
 import { Download, FileText } from "lucide-react";
-import Navbar from "@/components/Navbar";
+
 import Footer from "@/components/Footer";
 
 const Resume = () => {
@@ -8,7 +8,6 @@ const Resume = () => {
 
   return (
     <div className="min-h-screen bg-background bg-grid">
-      <Navbar />
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4 max-w-4xl">
           <h1 className="font-display text-3xl font-bold text-center mb-4">

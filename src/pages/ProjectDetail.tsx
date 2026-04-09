@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { ArrowLeft, Calendar, Tag } from "lucide-react";
-import Navbar from "@/components/Navbar";
+
 import Footer from "@/components/Footer";
 import { projects } from "@/data/projects";
 
@@ -11,7 +11,7 @@ const ProjectDetail = () => {
   if (!project) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
-        <Navbar />
+
         <div className="text-center">
           <h1 className="font-display text-2xl font-bold text-gradient mb-4">Project Not Found</h1>
           <Link to="/projects" className="text-primary hover:underline">← Back to Projects</Link>

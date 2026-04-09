@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { ArrowRight, FileText, Cog, Cpu, Ruler, Code } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
 import Timeline from "@/components/Timeline";
 import Footer from "@/components/Footer";
 import Navbar from "@/components/Navbar";
+import LightPillar from "@/components/LightPillar";
 
 const Index = () => {
   return (
@@ -13,21 +13,33 @@ const Index = () => {
       {/* Hero */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroBg} alt="Engineering workspace" width={1920} height={800} className="h-full w-full object-cover opacity-30" />
-          <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
+          <LightPillar
+            topColor="#ad74d2"
+            bottomColor="#7001df"
+            intensity={0.9}
+            rotationSpeed={0.2}
+            interactive={false}
+            glowAmount={0.003}
+            pillarWidth={7.5}
+            pillarHeight={0.65}
+            noiseIntensity={0}
+            pillarRotation={60}
+            quality="high"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-background" />
         </div>
 
         <div className="relative z-10 text-center px-4 max-w-4xl">
-          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-primary/30 bg-primary/5 mb-8">
-            <Cog className="h-5 w-5 text-primary animate-spin" style={{ animationDuration: "8s" }} />
-            <span className="font-display text-[13px] tracking-[0.3em] uppercase text-primary">Mechanical Engineering Portfolio</span>
+          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-white/30 bg-white/5 mb-8">
+            <Cog className="h-5 w-5 text-white animate-spin" style={{ animationDuration: "8s" }} />
+            <span className="font-display text-[13px] tracking-[0.3em] uppercase text-white">Mechanical Engineering Portfolio</span>
           </div>
 
           <h1 className="font-display text-5xl md:text-8xl font-bold tracking-tight leading-tight">
-            <span className="text-gradient">Lukas Liakhovitch</span>
+            <span className="text">Lukas Liakhovitch</span>
           </h1>
 
-          <p className="mt-8 text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-8 text-lg text-foreground max-w-2xl mx-auto leading-relaxed">
             Aspiring mechanical engineer with a passion for robotics, manufacturing, and innovative design.
             Building solutions from concept to prototype.
           </p>
@@ -41,7 +53,7 @@ const Index = () => {
             </Link>
             <Link
               to="/resume"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg border border-primary/30 text-foreground font-display text-sm tracking-widest uppercase hover:bg-primary/10 transition-colors"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg border border-primary/50 bg-primary/20 text-foreground font-display text-sm tracking-widest uppercase hover:bg-primary/30 transition-colors"
             >
               <FileText className="h-5 w-5" /> Resume
             </Link>
@@ -52,9 +64,17 @@ const Index = () => {
       {/* About Snippet */}
       <section className="py-24 relative">
         <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="font-display text-2xl font-bold text-center mb-12">
+          <h2 className="font-display text-2xl font-bold text-center mb-6">
             <span className="text-gradient">About Me</span>
           </h2>
+
+          <p className="text-center text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
+            I'm a mechanical engineering student at Purdue University with a hands-on approach to problem solving.
+            Whether it's designing parts in CAD, machining them in the shop, or writing code to bring systems to life,
+            I love turning ideas into reality. I'm driven by curiosity and a desire to build things that work,
+            from robots and mechanisms to software tools and embedded systems. Outside of school and technical projects
+            I love hiking, rock climbing, volleyball, and hanging out with friends.
+          </p>
 
           <div className="grid md:grid-cols-3 gap-6">
             {[

@@ -13,7 +13,10 @@ const Footer = () => {
               <span className="text-gradient">Lukas Liakhovitch</span>
             </div>
             <p className="text-sm text-muted-foreground">
-              Mechanical Engineering Student · Passionate about design, programming, and robotics.
+              Mechanical Engineering Student
+            </p>
+            <p className="text-sm text-muted-foreground">
+              Purdue University, IN
             </p>
           </div>
 
