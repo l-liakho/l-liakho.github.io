@@ -10,7 +10,7 @@ const Footer = () => {
           <div>
             <div className="flex items-center gap-2 font-display text-lg font-bold tracking-wider mb-3">
               <Wrench className="h-5 w-5 text-primary" />
-              <span className="text-gradient">PORTFOLIO</span>
+              <span className="text-gradient">Lukas Liakhovitch</span>
             </div>
             <p className="text-sm text-muted-foreground">
               Mechanical Engineering Student · Passionate about design, fabrication, and robotics.
@@ -38,14 +38,14 @@ const Footer = () => {
           <div>
             <h4 className="font-display text-xs tracking-widest uppercase text-primary mb-4">Get in Touch</h4>
             <div className="flex flex-col gap-2 text-sm text-muted-foreground">
-              <a href="mailto:student@university.edu" className="flex items-center gap-2 hover:text-primary transition-colors">
-                <Mail className="h-4 w-4" /> student@university.edu
+              <a href="mailto:lliakhov@purdue.edu" className="flex items-center gap-2 hover:text-primary transition-colors">
+                <Mail className="h-4 w-4" /> lliakhov@purdue.edu
               </a>
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary transition-colors">
-                <Github className="h-4 w-4" /> GitHub
-              </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary transition-colors">
+              <a href="https://linkedin.com/in/lukas-liakhovitch/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary transition-colors">
                 <Linkedin className="h-4 w-4" /> LinkedIn
+              </a>
+              <a href="https://github.com/l-liakho" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary transition-colors">
+                <Github className="h-4 w-4" /> GitHub
               </a>
             </div>
           </div>

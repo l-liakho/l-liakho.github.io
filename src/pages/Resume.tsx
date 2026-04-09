@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 
 const Resume = () => {
   // Placeholder PDF URL — user will replace with their actual resume
-  const resumeUrl = "/resume.pdf";
+  const resumeUrl = "/Liakhovitch, Lukas Resume.pdf";
 
   return (
     <div className="min-h-screen bg-background bg-grid">

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, FileText, Cog, Cpu, Ruler } from "lucide-react";
+import { ArrowRight, FileText, Cog, Cpu, Ruler, Code } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import Timeline from "@/components/Timeline";
 import Footer from "@/components/Footer";
@@ -17,33 +17,33 @@ const Index = () => {
           <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
         </div>
 
-        <div className="relative z-10 text-center px-4 max-w-3xl">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-primary/30 bg-primary/5 mb-6">
-            <Cog className="h-4 w-4 text-primary animate-spin" style={{ animationDuration: "8s" }} />
-            <span className="font-display text-[10px] tracking-[0.3em] uppercase text-primary">Mechanical Engineering</span>
+        <div className="relative z-10 text-center px-4 max-w-4xl">
+          <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-primary/30 bg-primary/5 mb-8">
+            <Cog className="h-5 w-5 text-primary animate-spin" style={{ animationDuration: "8s" }} />
+            <span className="font-display text-[13px] tracking-[0.3em] uppercase text-primary">Mechanical Engineering Portfolio</span>
           </div>
 
-          <h1 className="font-display text-4xl md:text-6xl font-bold tracking-tight leading-tight">
-            <span className="text-gradient">Engineering</span> the Future
+          <h1 className="font-display text-5xl md:text-8xl font-bold tracking-tight leading-tight">
+            <span className="text-gradient">Lukas Liakhovitch</span>
           </h1>
 
-          <p className="mt-6 text-muted-foreground max-w-xl mx-auto leading-relaxed">
-            Aspiring mechanical engineer with a passion for robotics, manufacturing, and innovative design. 
+          <p className="mt-8 text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+            Aspiring mechanical engineer with a passion for robotics, manufacturing, and innovative design.
             Building solutions from concept to prototype.
           </p>
 
-          <div className="flex flex-wrap gap-4 justify-center mt-8">
+          <div className="flex flex-wrap gap-5 justify-center mt-10">
             <Link
               to="/projects"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-display text-xs tracking-widest uppercase hover:bg-primary/90 transition-colors"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg bg-primary text-primary-foreground font-display text-sm tracking-widest uppercase hover:bg-primary/90 transition-colors"
             >
-              View Projects <ArrowRight className="h-4 w-4" />
+              View Projects <ArrowRight className="h-5 w-5" />
             </Link>
             <Link
               to="/resume"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-primary/30 text-foreground font-display text-xs tracking-widest uppercase hover:bg-primary/10 transition-colors"
+              className="inline-flex items-center gap-2 px-8 py-4 rounded-lg border border-primary/30 text-foreground font-display text-sm tracking-widest uppercase hover:bg-primary/10 transition-colors"
             >
-              <FileText className="h-4 w-4" /> Resume
+              <FileText className="h-5 w-5" /> Resume
             </Link>
           </div>
         </div>
@@ -58,9 +58,9 @@ const Index = () => {
 
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { icon: Cog, title: "Design", desc: "SolidWorks, Fusion 360, ANSYS for CAD and FEA" },
-              { icon: Cpu, title: "Fabrication", desc: "3D printing, CNC machining, welding, and manual machining" },
-              { icon: Ruler, title: "Prototyping", desc: "From napkin sketch to working prototype, end to end" },
+              { icon: Ruler, title: "Design", desc: "Fusion 360, NX, ANSYS for CAD and FEA" },
+              { icon: Cog, title: "Fabrication", desc: "3D printing, CNC machining, welding, soldering, and more" },
+              { icon: Cpu, title: "Programming", desc: "C, C++, Python, Java: from control systems to financial processing" },
             ].map((item) => (
               <div key={item.title} className="rounded-lg p-6 glow-border bg-card/50 text-center">
                 <item.icon className="h-8 w-8 text-primary mx-auto mb-3" />

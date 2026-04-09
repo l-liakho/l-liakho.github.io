@@ -8,7 +8,7 @@ const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    window.location.href = `mailto:student@university.edu?subject=Portfolio Contact from ${formData.name}&body=${encodeURIComponent(formData.message)}`;
+    window.location.href = `mailto:lliakhov@purdue.edu?subject=Portfolio Contact from ${formData.name}&body=${encodeURIComponent(formData.message)}`;
   };
 
   return (
@@ -28,10 +28,10 @@ const Contact = () => {
             <div className="space-y-6">
               <div className="rounded-lg glow-border bg-card/50 p-6 space-y-5">
                 {[
-                  { icon: Mail, label: "Email", value: "student@university.edu", href: "mailto:student@university.edu" },
-                  { icon: Github, label: "GitHub", value: "github.com/student", href: "https://github.com" },
-                  { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/student", href: "https://linkedin.com" },
-                  { icon: MapPin, label: "Location", value: "University City, USA", href: undefined },
+                  { icon: Mail, label: "Email", value: "lliakhov@purdue.edu", href: "mailto:lliakhov@purdue.edu" },
+                  { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/lukas-liakhovitch", href: "https://linkedin.com/in/lukas-liakhovitch/" },
+                  { icon: Github, label: "GitHub", value: "github.com/l-liakho", href: "https://github.com/l-liakho" },
+                  { icon: MapPin, label: "Location", value: "Hackettstown, NJ", href: undefined },
                 ].map((item) => (
                   <div key={item.label} className="flex items-center gap-3">
                     <div className="h-10 w-10 rounded-lg bg-primary/10 flex items-center justify-center">
