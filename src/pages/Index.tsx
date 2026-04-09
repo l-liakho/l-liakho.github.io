@@ -72,7 +72,7 @@ const Index = () => {
         <div className="absolute inset-x-0 -top-12 h-12 bg-gradient-to-b from-transparent to-background" />
         <div className="container mx-auto px-4 max-w-4xl">
           <h2 className="font-display text-4xl font-bold text-center mb-6">
-            <GradientText colors={["#3A0CA3","#9B4FDE","#B19EEF"]} animationSpeed={5} showBorder={false}>
+            <GradientText colors={["#3A0CA3","#9B4FDE","#B19EEF"]} animationSpeed={5} showBorder={false} yoyo={false}>
               About Me
             </GradientText>
           </h2>
@@ -107,7 +107,7 @@ const Index = () => {
         <div className="absolute inset-x-0 -bottom-12 h-12 bg-gradient-to-t from-transparent to-secondary/20" />
         <div className="container mx-auto px-4 max-w-5xl">
           <h2 className="font-display text-4xl font-bold text-center mb-16">
-            <GradientText colors={["#3A0CA3","#9B4FDE","#B19EEF"]} animationSpeed={5} showBorder={false}>
+            <GradientText colors={["#3A0CA3","#9B4FDE","#B19EEF"]} animationSpeed={5} showBorder={false} yoyo={false}>
               Project Timeline
             </GradientText>
           </h2>
@@ -119,7 +119,7 @@ const Index = () => {
       <section className="py-24">
         <div className="container mx-auto px-4 text-center max-w-2xl">
           <h2 className="font-display text-4xl font-bold mb-4">
-            <GradientText colors={["#3A0CA3","#9B4FDE","#B19EEF"]} animationSpeed={5} showBorder={false}>
+            <GradientText colors={["#3A0CA3","#9B4FDE","#B19EEF"]} animationSpeed={5} showBorder={false} yoyo={false}>
               Want to Know More?
             </GradientText>
           </h2>

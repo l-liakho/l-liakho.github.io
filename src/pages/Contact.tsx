@@ -17,7 +17,7 @@ const Contact = () => {
       <main className="pt-24 pb-16">
         <div className="container mx-auto px-4 max-w-3xl">
           <h1 className="font-display text-5xl font-bold text-center mb-4">
-            <GradientText colors={["#3A0CA3","#9B4FDE","#B19EEF"]} animationSpeed={5} showBorder={false}>
+            <GradientText colors={["#3A0CA3","#9B4FDE","#B19EEF"]} animationSpeed={5} showBorder={false} yoyo={false}>
               Contact Me
             </GradientText>
           </h1>
