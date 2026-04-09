@@ -161,7 +161,7 @@ const ProjectDetail = () => {
                                 <video
                                   src={item.src}
                                   controls
-                                  className="w-full"
+                                  className="w-full aspect-video object-contain bg-black"
                                 />
                                 {item.caption && (
                                   <p className="text-xs text-muted-foreground p-2 text-center">{item.caption}</p>

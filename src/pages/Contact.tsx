@@ -1,4 +1,4 @@
-import { Mail, Github, Linkedin, MapPin, Send } from "lucide-react";
+import { Mail, Github, Linkedin, Youtube, MapPin, Send } from "lucide-react";
 import { useState } from "react";
 
 import Footer from "@/components/Footer";
@@ -39,6 +39,7 @@ const Contact = () => {
                     { icon: Mail, label: "Email", value: "lliakhov@purdue.edu", href: "mailto:lliakhov@purdue.edu" },
                     { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/lukas-liakhovitch", href: "https://linkedin.com/in/lukas-liakhovitch/" },
                     { icon: Github, label: "GitHub", value: "github.com/l-liakho", href: "https://github.com/l-liakho" },
+                    { icon: Youtube, label: "YouTube", value: "youtube.com/@l.liakho", href: "https://www.youtube.com/@l.liakho" },
                     { icon: MapPin, label: "Location", value: "Hackettstown, NJ", href: undefined },
                   ].map((item) => (
                     <div key={item.label} className="flex items-center gap-3 group">

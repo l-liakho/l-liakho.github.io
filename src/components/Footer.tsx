@@ -1,4 +1,4 @@
-import { Mail, Github, Linkedin, Wrench } from "lucide-react";
+import { Mail, Github, Linkedin, Youtube, Wrench } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -50,6 +50,9 @@ const Footer = () => {
               </a>
               <a href="https://github.com/l-liakho" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary transition-colors">
                 <Github className="h-4 w-4" /> GitHub
+              </a>
+              <a href="https://www.youtube.com/@l.liakho" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 hover:text-primary transition-colors">
+                <Youtube className="h-4 w-4" /> YouTube
               </a>
             </div>
           </div>

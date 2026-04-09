@@ -15,6 +15,7 @@ export interface Project {
   gallery: GalleryItem[];
   tags: string[];
   date: string;
+  order: number;
   what: string;
   how: string;
   results: string;
@@ -24,13 +25,14 @@ export interface Project {
 export const projects: Project[] = [
   {
     id: "psp-ac",
-    title: "Purudue Space Program - Active Controls",
+    title: "Purdue Space Program - Active Controls",
     shortDesc: "Part of the team building a self landing, thrust vectoring rocket",
     description: "",
     image: project1,
     gallery: [],
     tags: [],
     date: "2026",
+    order: 0,
     what: "A 6-degree-of-freedom robotic arm with a custom end-effector gripper, designed for precision pick-and-place tasks.",
     how: "Modeled in SolidWorks with FEA stress analysis, FDM printed in PLA+ at 40% infill, and controlled via an Arduino Mega running a custom inverse kinematics solver in C++.",
     results: "Achieved 0.5mm repeatability across the full workspace with smooth servo-driven joint actuation.",
@@ -38,7 +40,7 @@ export const projects: Project[] = [
   {
     id: "tuzik",
     title: "Into The Deep Robot",
-    shortDesc: "My magnum opus, a solo-built FTC robot ranked in the 99.9th percentile for the 24-25 season",
+    shortDesc: "My magnum opus, a solo-built FTC robot ranked in the 99.9th percentile",
     description: "",
     image: "/projects/tuzik/tuzik_cover.JPG",
     gallery: [
@@ -56,6 +58,7 @@ export const projects: Project[] = [
     ],
     tags: [],
     date: "2024-25",
+    order: 3,
     what: "Restored a degrading 2003 Toyota Camry to reliable daily-driver condition.",
     how: "Diagnosed and repaired mechanical and electrical issues, replaced worn components, and performed preventive maintenance.",
     results: "Returned the vehicle to safe, dependable operation for everyday use.",
@@ -75,6 +78,7 @@ export const projects: Project[] = [
     ],
     tags: [],
     date: "2024",
+    order: 4,
     what: "Restored a heavily worn (220k+ miles) 2003 Toyota Camry to reliable daily-driver condition.",
     how: "Diagnosed and repaired mechanical and electrical issues, replaced worn components, and performed preventive maintenance.",
     results: "Returned the vehicle to safe, dependable operation for everyday use.",
@@ -95,6 +99,7 @@ export const projects: Project[] = [
     ],
     tags: [],
     date: "2023-24",
+    order: 6,
     what: "Restored a degrading 2003 Toyota Camry to reliable daily-driver condition.",
     how: "Diagnosed and repaired mechanical and electrical issues, replaced worn components, and performed preventive maintenance.",
     results: "Returned the vehicle to safe, dependable operation for everyday use.",
@@ -119,6 +124,7 @@ export const projects: Project[] = [
     ],
     tags: [],
     date: "2023",
+    order: 7,
     what: "Restored a degrading 2003 Toyota Camry to reliable daily-driver condition.",
     how: "Diagnosed and repaired mechanical and electrical issues, replaced worn components, and performed preventive maintenance.",
     results: "Returned the vehicle to safe, dependable operation for everyday use.",
@@ -138,8 +144,25 @@ export const projects: Project[] = [
     ],
     tags: [],
     date: "2022-23",
+    order: 10,
     what: "Restored a degrading 2003 Toyota Camry to reliable daily-driver condition.",
     how: "Diagnosed and repaired mechanical and electrical issues, replaced worn components, and performed preventive maintenance.",
     results: "Returned the vehicle to safe, dependable operation for everyday use.",
   },
+];
+
+export interface TimelineEvent {
+  id: string;
+  title: string;
+  shortDesc: string;
+  date: string;
+  order: number;
+}
+
+export const timelineEvents: TimelineEvent[] = [
+  { id: "purdue-start", title: "Started at Purdue", shortDesc: "Began studying Mechanical Engineering at Purdue University", date: "2025", order: 1 },
+  { id: "software-intern", title: "Software Engineering Intern", shortDesc: "Started role as a software engineering intern at Clearcut Software", date: "2025", order: 2 },
+  { id: "design-intern", title: "Design Intern", shortDesc: "Interned at L&M Architectural Signs to help with CAD/Design on a large scale project", date: "2024", order: 5 },
+  { id: "design-intern", title: "Founded Ultraviolet", shortDesc: "Began a brand new FTC community team, 23268 Ultraviolet", date: "2023", order: 9 },
+  { id: "reboot", title: "Started FTC", shortDesc: "Started FTC by joining my high school's team as sophmore", date: "2022", order: 11 },
 ];
