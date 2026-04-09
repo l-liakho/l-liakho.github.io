@@ -4,6 +4,7 @@ import Timeline from "@/components/Timeline";
 import Footer from "@/components/Footer";
 import LightPillar from "@/components/LightPillar";
 import BlurText from "@/components/BlurText";
+import GradientText from "@/components/GradientText";
 
 const Index = () => {
   return (
@@ -70,8 +71,10 @@ const Index = () => {
       <section className="pt-24 pb-24 relative">
         <div className="absolute inset-x-0 -top-12 h-12 bg-gradient-to-b from-transparent to-background" />
         <div className="container mx-auto px-4 max-w-4xl">
-          <h2 className="font-display text-2xl font-bold text-center mb-6">
-            <span className="text-gradient">About Me</span>
+          <h2 className="font-display text-4xl font-bold text-center mb-6">
+            <GradientText colors={["#3A0CA3","#9B4FDE","#B19EEF"]} animationSpeed={5} showBorder={false}>
+              About Me
+            </GradientText>
           </h2>
 
           <p className="text-center text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
@@ -103,8 +106,10 @@ const Index = () => {
         <div className="absolute inset-x-0 -top-12 h-12 bg-gradient-to-b from-transparent to-secondary/20" />
         <div className="absolute inset-x-0 -bottom-12 h-12 bg-gradient-to-t from-transparent to-secondary/20" />
         <div className="container mx-auto px-4 max-w-5xl">
-          <h2 className="font-display text-2xl font-bold text-center mb-16">
-            <span className="text-gradient">Project Timeline</span>
+          <h2 className="font-display text-4xl font-bold text-center mb-16">
+            <GradientText colors={["#3A0CA3","#9B4FDE","#B19EEF"]} animationSpeed={5} showBorder={false}>
+              Project Timeline
+            </GradientText>
           </h2>
           <Timeline />
         </div>
@@ -113,8 +118,10 @@ const Index = () => {
       {/* Resume CTA */}
       <section className="py-24">
         <div className="container mx-auto px-4 text-center max-w-2xl">
-          <h2 className="font-display text-2xl font-bold mb-4">
-            <span className="text-gradient">Want to Know More?</span>
+          <h2 className="font-display text-4xl font-bold mb-4">
+            <GradientText colors={["#3A0CA3","#9B4FDE","#B19EEF"]} animationSpeed={5} showBorder={false}>
+              Want to Know More?
+            </GradientText>
           </h2>
           <p className="text-muted-foreground mb-8">Check out my full resume for education, skills, and experience.</p>
           <Link
