@@ -14,68 +14,108 @@ const Timeline = () => {
 
   return (
     <div className="relative">
-      {/* Vertical line */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-px hidden md:block" style={{ background: "linear-gradient(to bottom, transparent 0%, hsl(var(--primary) / 0.5) 5%, hsl(var(--primary) / 0.5) 95%, transparent 100%)" }} />
+      {/* Vertical line — centered on md+, left-aligned on mobile */}
+      <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px" style={{ background: "linear-gradient(to bottom, transparent 0%, hsl(var(--primary) / 0.5) 5%, hsl(var(--primary) / 0.5) 95%, transparent 100%)" }} />
 
       <div className="space-y-20">
         {entries.map((entry, i) => (
-          <div key={entry.id} className={`flex flex-col md:flex-row items-center gap-8 ${i % 2 === 1 ? "md:flex-row-reverse" : ""}`}>
-            {/* Image (projects only) / Spacer (events) */}
-            {entry.kind === "project" ? (
-              <FadeIn direction={i % 2 === 0 ? "right" : "left"} delay={0.15} className="flex-1">
-                <Link to={`/projects/${entry.id}`}>
-                  <img
-                    src={entry.image}
-                    alt={entry.title}
-                    loading="lazy"
-                    width={800}
-                    height={600}
-                    className="rounded-lg glow-border w-full max-w-sm mx-auto object-cover aspect-square hover:scale-[1.03] hover:shadow-xl hover:shadow-primary/10 transition-all duration-500"
-                  />
-                </Link>
-              </FadeIn>
-            ) : (
-              <div className="flex-1 hidden md:block" />
-            )}
-
-            {/* Dot + Horizontal Line toward text */}
-            <FadeIn direction="none" delay={0.2}>
-              <div className="relative z-10 flex items-center">
-                <div className="relative flex h-4 w-4 shrink-0 items-center justify-center">
-                  <div className="h-4 w-4 rounded-full border-2 border-primary bg-background" />
-                  <div className="absolute h-4 w-4 rounded-full bg-primary/30 animate-pulse-glow" />
-                  {/* Horizontal line from dot toward text side */}
-                  <div className={`hidden md:block absolute top-1/2 -translate-y-1/2 w-16 h-px ${
-                    i % 2 === 0
-                      ? "left-full bg-gradient-to-r from-primary/50 to-transparent"
-                      : "right-full bg-gradient-to-l from-primary/50 to-transparent"
-                  }`} />
-                </div>
-              </div>
-            </FadeIn>
-
-            {/* Content */}
-            <FadeIn direction={i % 2 === 0 ? "left" : "right"} delay={0.1} className="flex-1">
-              <div className={`${i % 2 === 1 ? "md:text-right" : ""}`}>
-                {entry.kind === "project" ? (
-                  <Link to={`/projects/${entry.id}`} className="group block">
-                    <span className="font-display text-xs tracking-widest text-primary">{entry.date}</span>
-                    <h3 className="font-display text-lg font-bold mt-1 group-hover:text-primary transition-colors">
-                      {entry.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground mt-2">{entry.shortDesc}</p>
+          <div key={entry.id}>
+            {/* Desktop layout */}
+            <div className={`hidden md:flex flex-row items-center gap-8 ${i % 2 === 1 ? "flex-row-reverse" : ""}`}>
+              {/* Image (projects only) / Spacer (events) */}
+              {entry.kind === "project" ? (
+                <FadeIn direction={i % 2 === 0 ? "right" : "left"} delay={0.15} className="flex-1">
+                  <Link to={`/projects/${entry.id}`}>
+                    <img
+                      src={entry.image}
+                      alt={entry.title}
+                      loading="lazy"
+                      width={800}
+                      height={600}
+                      className="rounded-lg glow-border w-full max-w-sm mx-auto object-cover aspect-square hover:scale-[1.03] hover:shadow-xl hover:shadow-primary/10 transition-all duration-500"
+                    />
                   </Link>
-                ) : (
-                  <div>
-                    <span className="font-display text-xs tracking-widest text-primary">{entry.date}</span>
-                    <h3 className="font-display text-lg font-bold mt-1">
-                      {entry.title}
-                    </h3>
-                    <p className="text-sm text-muted-foreground mt-2">{entry.shortDesc}</p>
+                </FadeIn>
+              ) : (
+                <div className="flex-1" />
+              )}
+
+              {/* Dot + Horizontal Line toward text */}
+              <FadeIn direction="none" delay={0.2}>
+                <div className="relative z-10 flex items-center">
+                  <div className="relative flex h-4 w-4 shrink-0 items-center justify-center">
+                    <div className="h-4 w-4 rounded-full border-2 border-primary bg-background" />
+                    <div className="absolute h-4 w-4 rounded-full bg-primary/30 animate-pulse-glow" />
+                    <div className={`absolute top-1/2 -translate-y-1/2 w-16 h-px ${
+                      i % 2 === 0
+                        ? "left-full bg-gradient-to-r from-primary/50 to-transparent"
+                        : "right-full bg-gradient-to-l from-primary/50 to-transparent"
+                    }`} />
                   </div>
-                )}
+                </div>
+              </FadeIn>
+
+              {/* Content */}
+              <FadeIn direction={i % 2 === 0 ? "left" : "right"} delay={0.1} className="flex-1">
+                <div className={`${i % 2 === 1 ? "text-right" : ""}`}>
+                  {entry.kind === "project" ? (
+                    <Link to={`/projects/${entry.id}`} className="group block">
+                      <span className="font-display text-xs tracking-widest text-primary">{entry.date}</span>
+                      <h3 className="font-display text-lg font-bold mt-1 group-hover:text-primary transition-colors">
+                        {entry.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground mt-2">{entry.shortDesc}</p>
+                    </Link>
+                  ) : (
+                    <div>
+                      <span className="font-display text-xs tracking-widest text-primary">{entry.date}</span>
+                      <h3 className="font-display text-lg font-bold mt-1">
+                        {entry.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground mt-2">{entry.shortDesc}</p>
+                    </div>
+                  )}
+                </div>
+              </FadeIn>
+            </div>
+
+            {/* Mobile layout — dot on left, content to the right */}
+            <div className="flex md:hidden items-start gap-4 pl-0">
+              {/* Dot */}
+              <div className="relative z-10 flex h-4 w-4 shrink-0 items-center justify-center mt-[1.9rem]" style={{ marginLeft: "0.52rem" }}>
+                <div className="h-4 w-4 rounded-full border-2 border-primary bg-background" />
+                <div className="absolute h-4 w-4 rounded-full bg-primary/30 animate-pulse-glow" />
               </div>
-            </FadeIn>
+
+              {/* Content + Image */}
+              <FadeIn direction="right" delay={0.1} className="flex-1">
+                <div>
+                  {entry.kind === "project" ? (
+                    <Link to={`/projects/${entry.id}`} className="group block">
+                      <span className="font-display text-xs tracking-widest text-primary">{entry.date}</span>
+                      <h3 className="font-display text-base font-bold mt-1 group-hover:text-primary transition-colors">
+                        {entry.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground mt-1">{entry.shortDesc}</p>
+                      <img
+                        src={entry.image}
+                        alt={entry.title}
+                        loading="lazy"
+                        className="rounded-lg glow-border w-full max-w-xs object-cover aspect-square mt-3"
+                      />
+                    </Link>
+                  ) : (
+                    <div>
+                      <span className="font-display text-xs tracking-widest text-primary">{entry.date}</span>
+                      <h3 className="font-display text-base font-bold mt-1">
+                        {entry.title}
+                      </h3>
+                      <p className="text-sm text-muted-foreground mt-1">{entry.shortDesc}</p>
+                    </div>
+                  )}
+                </div>
+              </FadeIn>
+            </div>
           </div>
         ))}
       </div>

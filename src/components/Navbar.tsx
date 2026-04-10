@@ -34,7 +34,7 @@ const Navbar = () => {
     <>
       {/* Logo */}
       <div className="fixed top-0 left-0 z-[60] p-4">
-        <Link to="/" className="flex items-center gap-2 font-display text-lg font-bold tracking-wider">
+        <Link to="/" className="flex items-center gap-2 font-display text-lg font-bold tracking-wider px-3 py-1.5 rounded-lg bg-background/80 backdrop-blur-sm border border-border/30">
           <Wrench className="h-5 w-5 text-primary" />
           <span className="text-gradient">PORTFOLIO</span>
         </Link>
@@ -42,7 +42,7 @@ const Navbar = () => {
 
       {/* Hamburger button */}
       <button
-        className="fixed top-4 right-4 z-[60] flex flex-col justify-center items-center w-10 h-10 gap-[6px] group"
+        className="fixed top-4 right-4 z-[60] flex flex-col justify-center items-center w-10 h-10 gap-[6px] group rounded-lg bg-background/80 backdrop-blur-sm border border-border/30"
         onClick={() => setOpen(!open)}
         aria-label="Toggle menu"
       >

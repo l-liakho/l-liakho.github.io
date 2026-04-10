@@ -16,7 +16,7 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-background bg-grid">
       <main className="pt-24 pb-32">
-        <div className="container mx-auto px-4 max-w-3xl">
+        <div className="container mx-auto px-6 md:px-4 max-w-3xl">
           <FadeIn>
             <h1 className="font-display text-5xl font-bold text-center mb-4">
               <GradientText colors={["#3A0CA3","#9B4FDE","#B19EEF"]} animationSpeed={5} showBorder={false} yoyo={false}>

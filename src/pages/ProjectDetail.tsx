@@ -75,7 +75,7 @@ const ProjectDetail = () => {
   return (
     <div className="min-h-screen bg-background bg-grid">
       <main className="pt-24 pb-32">
-        <div className="container mx-auto px-4 max-w-3xl">
+        <div className="container mx-auto px-6 md:px-4 max-w-3xl">
           <Link to="/projects" className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors mb-8">
             <ArrowLeft className="h-4 w-4" /> Back to Projects
           </Link>
@@ -187,7 +187,7 @@ const ProjectDetail = () => {
                   <div className="mb-10">
                     <h3 className="text-lg font-semibold text-muted-foreground mb-4 text-center">Videos</h3>
                     {landscapeVideos.length > 0 && (
-                      <div className="grid grid-cols-2 gap-4">
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {landscapeVideos.map((item) => (
                           <FadeIn key={item.src} delay={0} distance={20}>
                             {item.type === "youtube" ? (
@@ -219,7 +219,7 @@ const ProjectDetail = () => {
                       </div>
                     )}
                     {portraitVideos.length > 0 && (
-                      <div className={`grid grid-cols-3 gap-4 ${landscapeVideos.length > 0 ? "mt-4" : ""}`}>
+                      <div className={`grid grid-cols-2 md:grid-cols-3 gap-4 ${landscapeVideos.length > 0 ? "mt-4" : ""}`}>
                         {portraitVideos.map((item) => (
                           <FadeIn key={item.src} delay={0} distance={20}>
                             <div className="rounded-lg overflow-hidden glow-border">

@@ -31,19 +31,37 @@ const Index = () => {
 
         <div className="relative z-10 text-center px-4 max-w-4xl">
           <FadeIn delay={0.2} direction="down" distance={20}>
-            <div className="inline-flex items-center gap-3 px-5 py-2 rounded-full border border-white/30 bg-white/5 mb-8">
-              <Cog className="h-5 w-5 text-white animate-spin" style={{ animationDuration: "8s" }} />
-              <span className="font-display text-[13px] tracking-[0.3em] uppercase text-white">Mechanical Engineering Portfolio</span>
+            <div className="inline-flex items-center gap-2 md:gap-3 px-4 md:px-5 py-2 rounded-full border border-white/30 bg-white/5 mb-8">
+              <Cog className="h-5 w-5 shrink-0 text-white animate-spin" style={{ animationDuration: "8s" }} />
+              <span className="font-display text-[10px] md:text-[13px] tracking-[0.2em] md:tracking-[0.3em] uppercase text-white whitespace-nowrap">Mechanical Engineering Portfolio</span>
             </div>
           </FadeIn>
 
-          <BlurText
-            text="Lukas Liakhovitch"
-            delay={60}
-            animateBy="letters"
-            direction="top"
-            className="font-display text-5xl md:text-8xl font-bold tracking-tight leading-tight justify-center"
-          />
+          <div className="hidden md:block">
+            <BlurText
+              text="Lukas Liakhovitch"
+              delay={60}
+              animateBy="letters"
+              direction="top"
+              className="font-display text-8xl font-bold tracking-tight leading-tight justify-center"
+            />
+          </div>
+          <div className="md:hidden text-center">
+            <BlurText
+              text="Lukas"
+              delay={60}
+              animateBy="letters"
+              direction="top"
+              className="font-display text-5xl font-bold tracking-tight leading-tight justify-center"
+            />
+            <BlurText
+              text="Liakhovitch"
+              delay={60}
+              animateBy="letters"
+              direction="top"
+              className="font-display text-5xl font-bold tracking-tight leading-tight justify-center"
+            />
+          </div>
 
           <BlurText
             text="Aspiring mechanical engineer with a passion for robotics, manufacturing, and innovative design. Building solutions from concept to prototype."
@@ -77,7 +95,7 @@ const Index = () => {
       {/* About Snippet */}
       <section className="pt-36 pb-36 relative">
         <div className="absolute inset-x-0 -top-12 h-12 bg-gradient-to-b from-transparent to-background" />
-        <div className="container mx-auto px-4 max-w-4xl">
+        <div className="container mx-auto px-6 md:px-4 max-w-4xl">
           <FadeIn>
             <h2 className="font-display text-4xl font-bold text-center mb-6">
               <GradientText colors={["#3A0CA3","#9B4FDE","#B19EEF"]} animationSpeed={5} showBorder={false} yoyo={false}>
@@ -119,7 +137,7 @@ const Index = () => {
       <section className="py-36 bg-secondary/20 relative">
         <div className="absolute inset-x-0 -top-12 h-12 bg-gradient-to-b from-transparent to-secondary/20" />
         <div className="absolute inset-x-0 -bottom-12 h-12 bg-gradient-to-t from-transparent to-secondary/20" />
-        <div className="container mx-auto px-4 max-w-5xl">
+        <div className="container mx-auto px-6 md:px-4 max-w-5xl">
           <FadeIn>
             <h2 className="font-display text-4xl font-bold text-center mb-16">
               <GradientText colors={["#3A0CA3","#9B4FDE","#B19EEF"]} animationSpeed={5} showBorder={false} yoyo={false}>
@@ -133,7 +151,7 @@ const Index = () => {
 
       {/* Resume CTA */}
       <section className="py-36">
-        <div className="container mx-auto px-4 text-center max-w-2xl">
+        <div className="container mx-auto px-6 md:px-4 text-center max-w-2xl">
           <FadeIn>
             <h2 className="font-display text-4xl font-bold mb-4">
               <GradientText colors={["#3A0CA3","#9B4FDE","#B19EEF"]} animationSpeed={5} showBorder={false} yoyo={false}>
