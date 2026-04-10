@@ -92,7 +92,8 @@ const Index = () => {
               Whether it's designing parts in CAD, machining them in the shop, or writing code to bring systems to life,
               I love turning ideas into reality. I'm driven by curiosity and a desire to build things that work,
               from robots and mechanisms to software tools and embedded systems. Outside of school and technical projects
-              I love hiking, rock climbing, volleyball, and hanging out with friends.
+              I love hiking, rock climbing, volleyball, and hanging out with friends. 
+              PS: FTC stands for First Tech Challenege, you'll see that acronym a lot here
             </p>
           </FadeIn>
 
@@ -122,7 +123,7 @@ const Index = () => {
           <FadeIn>
             <h2 className="font-display text-4xl font-bold text-center mb-16">
               <GradientText colors={["#3A0CA3","#9B4FDE","#B19EEF"]} animationSpeed={5} showBorder={false} yoyo={false}>
-                Project Timeline
+                Timeline
               </GradientText>
             </h2>
           </FadeIn>

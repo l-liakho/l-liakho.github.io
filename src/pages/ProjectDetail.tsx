@@ -1,7 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
-import { ArrowLeft, Calendar, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowLeft, Calendar, X, ChevronLeft, ChevronRight, Download } from "lucide-react";
 
 import Footer from "@/components/Footer";
 import GradientText from "@/components/GradientText";
@@ -17,12 +17,25 @@ const ProjectDetail = () => {
   useEffect(() => {
     if (!project) return;
     const localVideos = project.gallery.filter((item) => item.type === "video");
+    if (localVideos.length === 0) return;
+    const portrait: string[] = [];
+    let loaded = 0;
     localVideos.forEach((item) => {
       const video = document.createElement("video");
       video.preload = "metadata";
       video.onloadedmetadata = () => {
         if (video.videoHeight > video.videoWidth) {
-          setPortraitSrcs((prev) => new Set(prev).add(item.src));
+          portrait.push(item.src);
+        }
+        loaded++;
+        if (loaded === localVideos.length) {
+          setPortraitSrcs(new Set(portrait));
+        }
+      };
+      video.onerror = () => {
+        loaded++;
+        if (loaded === localVideos.length) {
+          setPortraitSrcs(new Set(portrait));
         }
       };
       video.src = item.src;
@@ -103,7 +116,7 @@ const ProjectDetail = () => {
               ] as const).map((cell) => (
                 <div key={cell.label} className="rounded-lg glow-border bg-card/50 p-5">
                   <h2 className="font-display text-sm tracking-widest uppercase text-primary mb-3">{cell.label}</h2>
-                  <p className="text-sm text-foreground/80 leading-relaxed">{cell.content}</p>
+                  <p className="text-sm text-foreground/80 leading-relaxed" dangerouslySetInnerHTML={{ __html: cell.content }} />
                 </div>
               ))}
             </div>
@@ -126,6 +139,39 @@ const ProjectDetail = () => {
             </FadeIn>
           )}
 
+          {/* Portfolio PDF */}
+          {project.portfolioPdf && (
+            <FadeIn delay={0.3}>
+              <div className="mb-12">
+                <h2 className="font-display text-2xl font-bold mb-2 flex justify-center">
+                  <GradientText colors={["#3A0CA3","#9B4FDE","#B19EEF"]} animationSpeed={5} showBorder={false} yoyo={false}>
+                    Robot Engineering Portfolio
+                  </GradientText>
+                </h2>
+                <p className="text-sm text-muted-foreground text-center mb-6">
+                  View this season's portfolio for a more in depth overview of the team (scroll to the end for robot specifications).
+                </p>
+                <div className="rounded-lg overflow-hidden glow-border bg-card/50">
+                  <iframe
+                    src={project.portfolioPdf}
+                    className="w-full"
+                    style={{ aspectRatio: "8.5 / 11" }}
+                    title="Robot Engineering Portfolio"
+                  />
+                </div>
+                <div className="flex justify-center mt-4">
+                  <a
+                    href={project.portfolioPdf}
+                    download
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-primary/10 text-primary text-sm font-display tracking-wider uppercase hover:bg-primary/20 transition-colors"
+                  >
+                    <Download className="h-4 w-4" /> Download PDF
+                  </a>
+                </div>
+              </div>
+            </FadeIn>
+          )}
+
           {/* Gallery */}
           {project.gallery.length > 0 && (
             <FadeIn>
@@ -139,11 +185,11 @@ const ProjectDetail = () => {
                 {/* Videos */}
                 {allVideos.length > 0 && (
                   <div className="mb-10">
-                    <h3 className="text-lg font-semibold text-muted-foreground mb-4">Videos</h3>
+                    <h3 className="text-lg font-semibold text-muted-foreground mb-4 text-center">Videos</h3>
                     {landscapeVideos.length > 0 && (
                       <div className="grid grid-cols-2 gap-4">
-                        {landscapeVideos.map((item, i) => (
-                          <FadeIn key={i} delay={0.05 * i} distance={20}>
+                        {landscapeVideos.map((item) => (
+                          <FadeIn key={item.src} delay={0} distance={20}>
                             {item.type === "youtube" ? (
                               <div className="rounded-lg overflow-hidden glow-border">
                                 <iframe
@@ -174,8 +220,8 @@ const ProjectDetail = () => {
                     )}
                     {portraitVideos.length > 0 && (
                       <div className={`grid grid-cols-3 gap-4 ${landscapeVideos.length > 0 ? "mt-4" : ""}`}>
-                        {portraitVideos.map((item, i) => (
-                          <FadeIn key={i} delay={0.05 * i} distance={20}>
+                        {portraitVideos.map((item) => (
+                          <FadeIn key={item.src} delay={0} distance={20}>
                             <div className="rounded-lg overflow-hidden glow-border">
                               <video
                                 src={item.src}
@@ -196,7 +242,7 @@ const ProjectDetail = () => {
                 {/* Photos */}
                 {photos.length > 0 && (
                   <div>
-                    <h3 className="text-lg font-semibold text-muted-foreground mb-4">Photos</h3>
+                    <h3 className="text-lg font-semibold text-muted-foreground mb-4 text-center">Photos</h3>
                     <div className="grid grid-cols-2 gap-4">
                       {photos.map((item, i) => (
                         <FadeIn key={i} delay={0.05 * i} distance={20}>

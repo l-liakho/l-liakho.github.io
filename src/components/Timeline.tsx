@@ -15,11 +15,11 @@ const Timeline = () => {
   return (
     <div className="relative">
       {/* Vertical line */}
-      <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-primary/50 to-transparent hidden md:block" />
+      <div className="absolute left-1/2 top-0 bottom-0 w-px hidden md:block" style={{ background: "linear-gradient(to bottom, transparent 0%, hsl(var(--primary) / 0.5) 5%, hsl(var(--primary) / 0.5) 95%, transparent 100%)" }} />
 
       <div className="space-y-20">
         {entries.map((entry, i) => (
-          <div key={entry.id} className={`flex flex-col md:flex-row ${entry.kind === "project" ? "items-center" : "items-start md:items-center"} gap-8 ${i % 2 === 1 ? "md:flex-row-reverse" : ""}`}>
+          <div key={entry.id} className={`flex flex-col md:flex-row items-center gap-8 ${i % 2 === 1 ? "md:flex-row-reverse" : ""}`}>
             {/* Image (projects only) / Spacer (events) */}
             {entry.kind === "project" ? (
               <FadeIn direction={i % 2 === 0 ? "right" : "left"} delay={0.15} className="flex-1">
