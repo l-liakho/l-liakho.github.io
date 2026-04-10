@@ -4,6 +4,7 @@ export interface GalleryItem {
   src: string;
   type: "image" | "video" | "youtube";
   caption?: string;
+  portrait?: boolean;
 }
 
 export interface Project {

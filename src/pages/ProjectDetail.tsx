@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 import { ArrowLeft, Calendar, X, ChevronLeft, ChevronRight, Download } from "lucide-react";
 
@@ -189,7 +189,7 @@ const ProjectDetail = () => {
                     {landscapeVideos.length > 0 && (
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         {landscapeVideos.map((item) => (
-                          <FadeIn key={item.src} delay={0} distance={20}>
+                          <div key={item.src}>
                             {item.type === "youtube" ? (
                               <div className="rounded-lg overflow-hidden glow-border">
                                 <iframe
@@ -207,6 +207,7 @@ const ProjectDetail = () => {
                                 <video
                                   src={item.src}
                                   controls
+                                  preload="metadata"
                                   className="w-full aspect-video object-contain bg-black"
                                 />
                                 {item.caption && (
@@ -214,25 +215,24 @@ const ProjectDetail = () => {
                                 )}
                               </div>
                             )}
-                          </FadeIn>
+                          </div>
                         ))}
                       </div>
                     )}
                     {portraitVideos.length > 0 && (
                       <div className={`grid grid-cols-2 md:grid-cols-3 gap-4 ${landscapeVideos.length > 0 ? "mt-4" : ""}`}>
                         {portraitVideos.map((item) => (
-                          <FadeIn key={item.src} delay={0} distance={20}>
-                            <div className="rounded-lg overflow-hidden glow-border">
-                              <video
-                                src={item.src}
-                                controls
-                                className="w-full"
-                              />
-                              {item.caption && (
-                                <p className="text-xs text-muted-foreground p-2 text-center">{item.caption}</p>
-                              )}
-                            </div>
-                          </FadeIn>
+                          <div key={item.src} className="rounded-lg overflow-hidden glow-border">
+                            <video
+                              src={item.src}
+                              controls
+                              preload="metadata"
+                              className="w-full"
+                            />
+                            {item.caption && (
+                              <p className="text-xs text-muted-foreground p-2 text-center">{item.caption}</p>
+                            )}
+                          </div>
                         ))}
                       </div>
                     )}

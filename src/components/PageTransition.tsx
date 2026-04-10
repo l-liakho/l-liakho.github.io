@@ -7,6 +7,9 @@ const PageTransition = ({ children }: { children: React.ReactNode }) => {
   const [phase, setPhase] = useState<"visible" | "fade-out" | "fade-in">("visible");
   const prevKey = useRef(location.key);
 
+  const childrenRef = useRef(children);
+  childrenRef.current = children;
+
   useEffect(() => {
     if (location.key === prevKey.current) return;
     prevKey.current = location.key;
@@ -16,7 +19,7 @@ const PageTransition = ({ children }: { children: React.ReactNode }) => {
 
     const fadeOutTimer = setTimeout(() => {
       // Swap content and scroll to top
-      setDisplayedChildren(children);
+      setDisplayedChildren(childrenRef.current);
       window.scrollTo(0, 0);
       setPhase("fade-in");
 
@@ -28,11 +31,11 @@ const PageTransition = ({ children }: { children: React.ReactNode }) => {
     }, 300);
 
     return () => clearTimeout(fadeOutTimer);
-  }, [location.key, children]);
+  }, [location.key]);
 
   // On first render, just show children directly
   useEffect(() => {
-    setDisplayedChildren(children);
+    setDisplayedChildren(childrenRef.current);
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const style: React.CSSProperties = {
