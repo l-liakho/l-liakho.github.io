@@ -151,13 +151,25 @@ const ProjectDetail = () => {
                 <p className="text-sm text-muted-foreground text-center mb-6">
                   View this season's portfolio for a more in depth overview of the team (scroll to the end for robot specifications).
                 </p>
-                <div className="rounded-lg overflow-hidden glow-border bg-card/50">
+                {/* Desktop: embedded viewer */}
+                <div className="hidden md:block rounded-lg overflow-hidden glow-border bg-card/50">
                   <iframe
                     src={project.portfolioPdf}
                     className="w-full"
                     style={{ aspectRatio: "8.5 / 11" }}
                     title="Robot Engineering Portfolio"
                   />
+                </div>
+                {/* Mobile: open/download buttons instead of broken iframe */}
+                <div className="flex flex-col items-center gap-3 md:hidden">
+                  <a
+                    href={project.portfolioPdf}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground text-sm font-display tracking-wider uppercase hover:bg-primary/90 transition-colors"
+                  >
+                    View PDF
+                  </a>
                 </div>
                 <div className="flex justify-center mt-4">
                   <a
