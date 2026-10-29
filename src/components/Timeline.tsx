@@ -40,20 +40,7 @@ const Timeline = () => {
                 <div className="flex-1" />
               )}
 
-              {/* Dot + Horizontal Line toward text */}
-              <FadeIn direction="none" delay={0.2}>
-                <div className="relative z-10 flex items-center">
-                  <div className="relative flex h-4 w-4 shrink-0 items-center justify-center">
-                    <div className="h-4 w-4 rounded-full border-2 border-primary bg-background" />
-                    <div className="absolute h-4 w-4 rounded-full bg-primary/30 animate-pulse-glow" />
-                    <div className={`absolute top-1/2 -translate-y-1/2 w-16 h-px ${
-                      i % 2 === 0
-                        ? "left-full bg-gradient-to-r from-primary/50 to-transparent"
-                        : "right-full bg-gradient-to-l from-primary/50 to-transparent"
-                    }`} />
-                  </div>
-                </div>
-              </FadeIn>
+              <div className="w-4 shrink-0" />
 
               {/* Content */}
               <FadeIn direction={i % 2 === 0 ? "left" : "right"} delay={0.1} className="flex-1">
@@ -61,7 +48,12 @@ const Timeline = () => {
                   {entry.kind === "project" ? (
                     <Link to={`/projects/${entry.id}`} className="group block">
                       <span className="font-display text-xs tracking-widest text-primary">{entry.date}</span>
-                      <h3 className="font-display text-lg font-bold mt-1 group-hover:text-primary transition-colors">
+                      <h3 className="relative font-display text-lg font-bold mt-1 group-hover:text-primary transition-colors">
+                        <span className={`absolute top-1/2 -translate-y-1/2 z-10 flex h-4 w-4 items-center justify-center ${i % 2 === 0 ? "-left-12" : "-right-12"}`} aria-hidden="true">
+                          <span className="h-4 w-4 rounded-full border-2 border-primary bg-background" />
+                          <span className="absolute h-4 w-4 rounded-full bg-primary/30 animate-pulse-glow" />
+                          <span className={`absolute top-1/2 -translate-y-1/2 w-16 h-px ${i % 2 === 0 ? "left-full bg-gradient-to-r" : "right-full bg-gradient-to-l"} from-primary/50 to-transparent`} />
+                        </span>
                         {entry.title}
                       </h3>
                       <p className="text-sm text-muted-foreground mt-2">{entry.shortDesc}</p>
@@ -69,7 +61,12 @@ const Timeline = () => {
                   ) : (
                     <div>
                       <span className="font-display text-xs tracking-widest text-primary">{entry.date}</span>
-                      <h3 className="font-display text-lg font-bold mt-1">
+                      <h3 className="relative font-display text-lg font-bold mt-1">
+                        <span className={`absolute top-1/2 -translate-y-1/2 z-10 flex h-4 w-4 items-center justify-center ${i % 2 === 0 ? "-left-12" : "-right-12"}`} aria-hidden="true">
+                          <span className="h-4 w-4 rounded-full border-2 border-primary bg-background" />
+                          <span className="absolute h-4 w-4 rounded-full bg-primary/30 animate-pulse-glow" />
+                          <span className={`absolute top-1/2 -translate-y-1/2 w-16 h-px ${i % 2 === 0 ? "left-full bg-gradient-to-r" : "right-full bg-gradient-to-l"} from-primary/50 to-transparent`} />
+                        </span>
                         {entry.title}
                       </h3>
                       <p className="text-sm text-muted-foreground mt-2">{entry.shortDesc}</p>

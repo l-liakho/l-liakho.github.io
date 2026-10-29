@@ -26,6 +26,31 @@ export interface Project {
 
 export const projects: Project[] = [
   {
+    id: "part",
+    title: "Purdue Aerial Robotics Team",
+    shortDesc: "Designing aircraft control surfaces and mechanisms on the Mechanisms subteam of PART’s Competition team.",
+    description: "",
+    image: "/projects/part/aircraft.png",
+    gallery: [
+      { src: "/projects/part/gallery/part-01.png", type: "image" },
+      { src: "/projects/part/gallery/part-02.png", type: "image" },
+      { src: "/projects/part/gallery/part-03.png", type: "image" },
+      { src: "/projects/part/gallery/part-04.png", type: "image" },
+      { src: "/projects/part/gallery/part-05.png", type: "image" },
+      { src: "/projects/part/gallery/part-06.png", type: "image" },
+      { src: "/projects/part/gallery/part-07.png", type: "image" },
+      { src: "/projects/part/gallery/part-08.png", type: "image" },
+      { src: "/projects/part/gallery/part-09.png", type: "image" },
+      { src: "/projects/part/gallery/part-10.png", type: "image" },
+    ],
+    tags: ["Aircraft", "Mechanisms", "Onshape"],
+    date: "Aug 2026 - Present",
+    order: -2,
+    what: "As a <b>mechanisms engineer</b> on the Purdue Aerial Robotics Team's competition team, I am responsible for the ailerons, elevators, and rudder on the 2026-27 SUAS aircraft.",
+    how: "Designed fully parametric control surface models in <b>Onshape</b>, sized servo-controlled drive systems for minimum weight, and built and tested <b>3D-printed prototypes</b>. Used branching, merging, and version control to integrate designs into a master assembly shared by more than 30 contributors across four subteams.",
+    results: "The project is ongoing. My work brings together lightweight mechanism design, prototyping, and coordination across the aircraft's shared assembly.",
+  },
+  {
     id: "psp-ac",
     title: "Purdue Space Program - Active Controls",
     shortDesc: "Part of the team building a self landing, thrust vectoring rocket",
@@ -40,16 +65,16 @@ export const projects: Project[] = [
       { src: "https://www.youtube.com/watch?v=TCBOPhCRm1g", type: "youtube" },
     ],
     tags: [],
-    date: "2026",
+    date: "Jan 2026 - May 2026",
     order: 0,
     what: "Designed and manufactured structural members and fluid system mounts for a <b>9 ft, 500 lb thrust-vectoring self-landing rocket</b> as part of the Active Controls structures and manufacturing team at Purdue Space Program.",
     how: "Modeled components in <b>NX</b>, performed <b>FEA in NX SimLab and ANSYS</b> on lander structural members, and iterated designs to meet load and vibration requirements. Manufactured parts using machining and fabrication techniques.",
-    results: "Delivered flight-ready structural components that passed FEA validation under expected <b>thrust and landing loads</b>. Currently contributing to the team's ongoing development toward a full self-landing test flight.",
+    results: "Delivered flight-ready structural components that passed FEA validation under expected <b>thrust and landing loads</b>. Contributed to the team's development toward a full self-landing test flight.",
   },
   {
     id: "tuzik",
     title: "Into The Deep Robot",
-    shortDesc: "My magnum opus, a solo-built FTC robot ranked in the 99.9th percentile",
+    shortDesc: "My magnum opus, a solo-built FTC robot ranked 4th in the world",
     description: "",
     image: "/projects/tuzik/tuzik_cover.JPG",
     gallery: [
@@ -183,6 +208,7 @@ export interface TimelineEvent {
 }
 
 export const timelineEvents: TimelineEvent[] = [
+  { id: "eukodyne-intern", title: "Software Engineering Intern", shortDesc: "Started role as a software engineering intern at Eukodyne", date: "May 2026 - Present", order: -1 },
   { id: "purpl", title: "Purdue Undergrad Rocket Propulsion Lab", shortDesc: "Worked on a torch igniter and student-led turbopump at PURPL", date: "2026", order: 1 },
   { id: "purdue-start", title: "Started at Purdue", shortDesc: "Began studying Mechanical Engineering at Purdue University", date: "2025", order: 2 },
   { id: "software-intern", title: "Software Engineering Intern", shortDesc: "Started role as a software engineering intern at Clearcut Software", date: "2025", order: 3 },

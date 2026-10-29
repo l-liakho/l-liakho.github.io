@@ -4,7 +4,6 @@ import Footer from "@/components/Footer";
 import GradientText from "@/components/GradientText";
 
 const Resume = () => {
-  // Placeholder PDF URL — user will replace with their actual resume
   const resumeUrl = "/Liakhovitch, Lukas Resume.pdf";
 
   return (
@@ -40,7 +39,7 @@ const Resume = () => {
                 <div className="flex flex-col items-center justify-center h-full gap-4 p-8 text-center">
                   <FileText className="h-16 w-16 text-primary/40" />
                   <p className="text-muted-foreground">
-                    PDF preview unavailable. Place your <code className="text-primary">resume.pdf</code> in the <code className="text-primary">public/</code> folder.
+                    PDF preview unavailable in this browser. You can download the resume below.
                   </p>
                   <a
                     href={resumeUrl}

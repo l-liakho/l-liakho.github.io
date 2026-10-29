@@ -105,14 +105,42 @@ const Index = () => {
           </FadeIn>
 
           <FadeIn delay={0.15}>
-            <p className="text-center text-muted-foreground max-w-2xl mx-auto mb-12 leading-relaxed">
-              I'm a mechanical engineering student at Purdue University with a hands-on approach to problem solving.
-              Whether it's designing parts in CAD, machining them in the shop, or writing code to bring systems to life,
-              I love turning ideas into reality. I'm driven by curiosity and a desire to build things that work,
-              from robots and mechanisms to software tools and embedded systems. Outside of school and technical projects
-              I love hiking, rock climbing, volleyball, and hanging out with friends. 
-              PS: FTC stands for First Tech Challenege, you'll see that acronym a lot here
-            </p>
+            <div className="max-w-3xl mx-auto mb-12 space-y-5 text-center text-muted-foreground leading-relaxed">
+              <p>
+                I'm a mechanical engineering student at Purdue University who likes to understand how things work,
+                break complex problems into manageable pieces, and turn ideas into working systems. My experience
+                spans competitive robotics, aircraft mechanisms, rocket structures, and software.
+              </p>
+              <p>
+                <strong className="text-foreground">My mission:</strong> Build autonomous systems that turn
+                ideas into physical results. I am especially excited by things like drones and robotics, and the opportunity to bring
+                mechanical design, manufacturing, and software together to solve meaningful problems.
+              </p>
+              <p>
+                <strong className="text-foreground">What I value:</strong> Practicality, resourcefulness, and impact. I value
+                finding the right solution for the goal and constraints, then prototyping, testing,
+                and improving it. Building a competitive robot with a small team and limited resources taught me
+                to focus effort where it matters most.
+              </p>
+              <p>
+                Outside of engineering, I enjoy photography, rock climbing, volleyball, and spending time with friends.
+              </p>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={0.2}>
+            <div className="grid md:grid-cols-3 gap-6 mb-12">
+              {[
+                { title: "What I do best", desc: "Learn complex systems, understand the mechanics, and break large problems into achievable steps. Even if I don't have the current knowledge to solve it, I will learn how to." },
+                { title: "Problems I solve", desc: "Turning design and operational challenges into practical solutions, balancing performance, time, and cost, regardless of the difficulty or technical complexity." },
+                { title: "Why work with me", desc: "I bring ideas from concept to prototype, with hands-on design, fabrication, and programming experience, all with a focus on what the goal actually requires." },
+              ].map((item) => (
+                <div key={item.title} className="rounded-lg p-6 glow-border bg-card/50 text-center">
+                  <h3 className="font-display text-sm font-bold tracking-wider text-primary mb-3">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
+            </div>
           </FadeIn>
 
           <div className="grid md:grid-cols-3 gap-6">
